@@ -1,12 +1,12 @@
 {
-  "name": "runbash",
-  "version": "0.0.0",
-  "main": "runbash.js",
-  "dependencies": {
-    "bash.origin": "0.1.x",
-    "bluebird": "^3.0.6"
-  },
-  "scripts": {
-    "test": "node test.js"
-  }
+    "name": "runbash",
+    "version": "0.0.1",
+    "main": "runbash.js",
+    "dependencies": {
+        "bash.origin": "0.1.x",
+        "bluebird": "^3.0.6"
+    },
+    "scripts": {
+        "test": "node test.js"
+    }
 }
