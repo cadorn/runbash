@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "main": "runbash.js",
   "dependencies": {
-    "bash.origin": "^0.1.28",
+    "bash.origin": "0.1.x",
     "bluebird": "^3.0.6"
   },
   "scripts": {
