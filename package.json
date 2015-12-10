@@ -5,5 +5,8 @@
   "dependencies": {
     "bash.origin": "^0.1.28",
     "bluebird": "^3.0.6"
+  },
+  "scripts": {
+    "test": "node test.js"
   }
 }
