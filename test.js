@@ -3,6 +3,9 @@ const ASSERT = require("assert");
 const RUNBASH = require("./");
 
 
+console.log("FOO", process.env.FOO);
+
+
 RUNBASH([
     'echo $PWD'
 ]).then(function (result) {
