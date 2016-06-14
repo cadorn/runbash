@@ -172,13 +172,18 @@ module.exports = function (commands, options) {
 	    });
 	    var stdout = [];
 	    var stderr = [];
+
+	    function formatEscapeCodes (data) {
+	    	return data;
+	    }
+
 	    proc.stdout.on('data', function (data) {
 	    	stdout.push(data.toString());
-			if (options.verbose || options.progress) process.stdout.write(data);
+			if (options.verbose || options.progress) process.stdout.write(formatEscapeCodes(data));
 	    });
 	    proc.stderr.on('data', function (data) {
 	    	stderr.push(data.toString());
-			if (options.verbose || options.progress) process.stderr.write(data);
+			if (options.verbose || options.progress) process.stderr.write(formatEscapeCodes(data));
 	    });
 	    proc.stdin.write(commands.join("\n"));
 	    proc.stdin.end();
