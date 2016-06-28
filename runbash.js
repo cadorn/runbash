@@ -1,9 +1,9 @@
 
 
 module.exports = function (commands, options) {
-	
+
 	const Promise = require("bluebird");
-	
+
 	return Promise.promisify(function (_callback) {
 
 		const CHILD_PROCESS = require("child_process");
@@ -21,7 +21,7 @@ module.exports = function (commands, options) {
 		if (options.verbose) {
 			console.log("[runbash] Running commands:", commands);
 		}
-		
+
 		if (options.wrappers) {
 		    if (options.wrappers["bash.origin"]) {
 		        commands = [
@@ -29,7 +29,7 @@ module.exports = function (commands, options) {
                     'function init {',
                     '	eval BO_SELF_BASH_SOURCE="$BO_READ_SELF_BASH_SOURCE"',
                     '	BO_deriveSelfDir ___TMP___ "$BO_SELF_BASH_SOURCE"',
-                    '	local __BO_DIR__="$___TMP___"',
+                    '	local __BO_DIR__="$___TMP___"'
 		        ].concat(commands).concat([
                     '}',
                     'init $@'
@@ -38,15 +38,15 @@ module.exports = function (commands, options) {
 		}
 
 
-	
+
 		// TODO: Put this into utility module/package.
 		function getProcesses (callback) {
-	
+
 			var processes = {
 				byPid: {},
 			};
 			var columns;
-	
+
 			function makeRow (columns, fields) {
 				var row = {};
 				fields.forEach(function (field, index) {
@@ -75,12 +75,12 @@ module.exports = function (commands, options) {
 				buffer.join("").split("\n").forEach(function (line) {
 					if (!line) return;
 					var fields = line.replace(/[\t\s]+/g, " ").replace(/(^\s|\s$)/g, "").split(/\s/);
-	
+
 					if (fields[0] === "PPID" || fields[0] === "USER") {
 						columns = fields;
 					} else {
 						// @see http://www.cs.miami.edu/~geoff/Courses/CSC521-04F/Content/UNIXProgramming/UNIXProcesses.shtml
-						// @see http://chinkisingh.com/2012/06/10/session-foreground-processes-background-processes-and-their-interaction-with-controlling-terminal/					
+						// @see http://chinkisingh.com/2012/06/10/session-foreground-processes-background-processes-and-their-interaction-with-controlling-terminal/
 						var process = makeRow(columns, fields);
 						// process.PID - Process ID
 						// process.PPID - Parent process ID
@@ -113,7 +113,7 @@ module.exports = function (commands, options) {
 						// process.%MEM - % of current total MEM utilization
 						// process.VSZ - (Virtual Memory Size) Accessible memory including swap and shared lib ; @see http://stackoverflow.com/a/21049737/330439
 						// process.RSS - (Resident Set Size) Allocated ram ; @see http://stackoverflow.com/a/21049737/330439
-	
+
 						if (!processes.byPid[process.PID]) {
 							processes.byPid[process.PID] = {};
 						}
@@ -125,7 +125,7 @@ module.exports = function (commands, options) {
 								processes.byPid[process.PID].info[name] = process[name];
 							}
 						}
-	
+
 						if (process.PPID) {
 							if (!processes.byPid[process.PPID]) {
 								processes.byPid[process.PPID] = {};
@@ -137,16 +137,16 @@ module.exports = function (commands, options) {
 								processes.byPid[process.PPID].children.push(process.PID);
 							}
 						}
-	
+
 					}
 				});
-	
+
 				return callback(null, processes)
 			});
 			proc.stdin.write("ps axo ppid,pid,command");
 			return proc.stdin.end();
 		}
-	
+
 		function killPIDs (pids, callback) {
 			var command = "kill " + pids.join(" ");
 			if (options.verbose) console.log("Run: " + command);
@@ -157,7 +157,7 @@ module.exports = function (commands, options) {
 					return callback(/* purposely not returning error */);
 				}
 				return callback();
-			});		
+			});
 		}
 
 
