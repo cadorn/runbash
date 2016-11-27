@@ -22,6 +22,15 @@ module.exports = function (commands, options) {
 			console.log("[runbash] Running commands:", commands);
 		}
 
+
+		// Reset bash.origin loaded variables
+		commands = [
+				'export BO_LOADED=',
+				'export BO_IS_SOURCING=',
+				'export BO_sourceProfile__sourced='
+		].concat(commands);
+
+
 		if (options.wrappers) {
 		    if (options.wrappers["bash.origin"]) {
 		        commands = [
@@ -31,12 +40,11 @@ module.exports = function (commands, options) {
                     '	BO_deriveSelfDir ___TMP___ "$BO_SELF_BASH_SOURCE"',
                     '	local __BO_DIR__="$___TMP___"'
 		        ].concat(commands).concat([
-                    '}',
-                    'init $@'
-                ]);
+                '}',
+                'init $@'
+            ]);
 		    }
 		}
-
 
 
 		// TODO: Put this into utility module/package.
@@ -178,12 +186,12 @@ module.exports = function (commands, options) {
 	    }
 
 	    proc.stdout.on('data', function (data) {
-	    	stdout.push(data.toString());
-			if (options.verbose || options.progress) process.stdout.write(formatEscapeCodes(data));
+		    	stdout.push(data.toString());
+					if (options.verbose || options.progress) process.stdout.write(formatEscapeCodes(data.toString()));
 	    });
 	    proc.stderr.on('data', function (data) {
-	    	stderr.push(data.toString());
-			if (options.verbose || options.progress) process.stderr.write(formatEscapeCodes(data));
+	    		stderr.push(data.toString());
+					if (options.verbose || options.progress) process.stderr.write(formatEscapeCodes(data.toString()));
 	    });
 	    proc.stdin.write(commands.join("\n"));
 	    proc.stdin.end();
