@@ -18,32 +18,40 @@ module.exports = function (commands, options) {
 		}
 
 	    options = options || {}
-		if (options.verbose) {
-			console.log("[runbash] Running commands:", commands);
-		}
 
 
 		// Reset bash.origin loaded variables
-		commands = [
+		var extraVars = [
 				'export BO_LOADED=',
 				'export BO_IS_SOURCING=',
 				'export BO_sourceProfile__sourced='
-		].concat(commands);
+		];
 
+		if (options.verbose) {
+				extraVars = extraVars.concat([
+						'export BO_VERBOSE=1'
+				]);
+		}
+
+		commands = commands.concat(extraVars);
 
 		if (options.wrappers) {
 		    if (options.wrappers["bash.origin"]) {
-		        commands = [
-                    '. "' + require.resolve("bash.origin/bash.origin") + '"',
-                    'function init {',
-                    '	eval BO_SELF_BASH_SOURCE="$BO_READ_SELF_BASH_SOURCE"',
-                    '	BO_deriveSelfDir ___TMP___ "$BO_SELF_BASH_SOURCE"',
-                    '	local __BO_DIR__="$___TMP___"'
+		        commands = extraVars.concat([
+                '. "' + require.resolve("bash.origin/bash.origin") + '"',
+                'function init {',
+                '	eval BO_SELF_BASH_SOURCE="$BO_READ_SELF_BASH_SOURCE"',
+                '	BO_deriveSelfDir ___TMP___ "$BO_SELF_BASH_SOURCE"',
+                '	local __BO_DIR__="$___TMP___"'
 		        ].concat(commands).concat([
                 '}',
                 'init $@'
-            ]);
+            ]));
 		    }
+		}
+
+		if (options.verbose) {
+			console.log("[runbash] Running commands:", commands);
 		}
 
 
