@@ -2,6 +2,10 @@
 
 module.exports = function (commands, options) {
 
+	if (typeof commands === "string") {
+		commands = [ commands ];
+	}
+
 	const Promise = require("bluebird");
 
 	return Promise.promisify(function (_callback) {
