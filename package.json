@@ -8,6 +8,7 @@
         "bluebird": "^3.5.0"
     },
     "scripts": {
+        "prepublish": "BO_ROOT_SCRIPT_PATH=$(pwd)/node_modules/bash.origin/bash.origin website.sh",
         "test": "BO_ROOT_SCRIPT_PATH=$(pwd)/node_modules/bash.origin/bash.origin bash.origin.test examples"
     }
 }
