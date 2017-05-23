@@ -3,8 +3,8 @@
     "version": "0.0.6",
     "main": "runbash.js",
     "dependencies": {
-        "bash.origin.test": "0.1.x",
-        "bash.origin": "0.1.x",
+        "bash.origin.test": "^0.1.30",
+        "bash.origin": "^0.1.59",
         "bluebird": "^3.5.0"
     },
     "scripts": {
