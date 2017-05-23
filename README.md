@@ -1,7 +1,7 @@
 
-**Source:** [github.com/cadorn/runbash](https://github.com/cadorn/runbash) |
-**Website:** [cadorn.github.io/runbash](https://cadorn.github.io/runbash) |
-**Continuous Integration:** [![CircleCI](https://circleci.com/gh/cadorn/runbash.svg?style=svg)](https://circleci.com/gh/cadorn/runbash)
+* **Source:** [github.com/cadorn/runbash](https://github.com/cadorn/runbash)
+* **Website:** [cadorn.github.io/runbash](https://cadorn.github.io/runbash)
+* **Continuous Integration:** [![CircleCI](https://circleci.com/gh/cadorn/runbash.svg?style=svg)](https://circleci.com/gh/cadorn/runbash)
 
 runbash
 =======
