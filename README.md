@@ -1,6 +1,6 @@
 
-[![CircleCI](https://circleci.com/gh/cadorn/runbash.svg?style=svg)](https://circleci.com/gh/cadorn/runbash) |
 [github.com/cadorn/runbash](https://github.com/cadorn/runbash) |
+[![CircleCI](https://circleci.com/gh/cadorn/runbash.svg?style=svg)](https://circleci.com/gh/cadorn/runbash) |
 [cadorn.github.io/runbash](https://cadorn.github.io/runbash)
 
 runbash
