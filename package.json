@@ -1,6 +1,6 @@
 {
     "name": "runbash",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "main": "runbash.js",
     "dependencies": {
         "bash.origin.test": "0.1.x",
