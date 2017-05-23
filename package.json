@@ -3,10 +3,11 @@
     "version": "0.0.4",
     "main": "runbash.js",
     "dependencies": {
+        "bash.origin.test": "0.1.x",
         "bash.origin": "0.1.x",
-        "bluebird": "^3.0.6"
+        "bluebird": "^3.5.0"
     },
     "scripts": {
-        "test": "node test.js"
+        "test": "BO_ROOT_SCRIPT_PATH=$(pwd)/node_modules/bash.origin/bash.origin bash.origin.test examples"
     }
 }
