@@ -228,6 +228,7 @@ module.exports = function (commands, options) {
 				}
 	    	}
 	        return callback(null, {
+				code: 0,
 	            stdout: stdout,
 	            stderr: stderr.join(""),
 	            exports: exports
