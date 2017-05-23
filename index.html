@@ -1,0 +1,58 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+    <style>
+BODY {
+    padding-left: 20px;
+}
+</style>
+</head>
+    <body>
+        <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+    <h1 id="undefinedrunbash">runbash</h1>
+<p><a href="https://circleci.com/gh/cadorn/runbash"><img src="https://circleci.com/gh/cadorn/runbash.svg?style=svg" alt="CircleCI"></a>
+<a href="https://github.com/cadorn/runbash">github.com/cadorn/runbash</a>
+<a href="https://cadorn.github.io/runbash">cadorn.github.io/runbash</a></p>
+<p>Run <a href="https://www.gnu.org/software/bash/">bash</a> and <a href="https://github.com/bash-origin/bash.origin">bash.origin</a> from <a href="https://nodejs.org/">NodeJS</a>. Easily.</p>
+<h2 id="undefinedinstall">Install</h2>
+<pre><code class="undefinedbash">npm install runbash
+</code></pre>
+<h2 id="undefinedusage">Usage</h2>
+<pre><code class="undefinedjavascript"><span class="hljs-keyword">const</span> RUNBASH = <span class="hljs-built_in">require</span>(<span class="hljs-string">"runbash"</span>);
+
+RUNBASH([
+    <span class="hljs-string">"echo 'Hello World'"</span>,
+    <span class="hljs-string">"echo 'FOO: BAR'"</span>
+], {
+    <span class="hljs-attr">verbose</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">progress</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">wrappers</span>: {
+        <span class="hljs-string">"bash.origin"</span>: <span class="hljs-literal">true</span>
+    },
+    <span class="hljs-attr">wait</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">exports</span>: <span class="hljs-literal">true</span>,    
+}).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">result</span>) </span>{
+
+    <span class="hljs-comment">// result.code</span>
+    <span class="hljs-comment">// result.stdout</span>
+    <span class="hljs-comment">// result.status</span>
+    <span class="hljs-comment">// result.exports.FOO</span>
+
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+});
+</code></pre>
+<h1 id="undefinedprovenance">Provenance</h1>
+<p>Original source logic under <a href="https://opensource.org/licenses/FPL-1.0.0">Free Public License</a> by <a href="http://christophdorn.com">Christoph Dorn</a></p>
+
+</body>
+</html>
