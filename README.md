@@ -39,4 +39,4 @@ RUNBASH([
 Provenance
 ==========
 
-Original source logic under [Free Public License](https://opensource.org/licenses/FPL-1.0.0) by [Christoph Dorn](http://christophdorn.com) since 2015.
+Original Source Logic under [Free Public License](https://opensource.org/licenses/FPL-1.0.0) by [Christoph Dorn](http://christophdorn.com) since 2015.
