@@ -1,19 +1,12 @@
 
-| License | Source | --> | Website |
-| :---: | --- | :---: | --- |
-| [FPL](https://opensource.org/licenses/FPL-1.0.0) | [github.com/cadorn/runbash](https://github.com/cadorn/runbash) | [![CircleCI](https://circleci.com/gh/cadorn/runbash.svg?style=svg)](https://circleci.com/gh/cadorn/runbash) | [cadorn.github.io/runbash](https://cadorn.github.io/runbash)
+| License | Source | --> | Website | [npm](https://github.com/npm/npm) |
+| :---: | --- | :---: | --- | --- |
+| [FPL](https://opensource.org/licenses/FPL-1.0.0) | [github.com/cadorn/runbash](https://github.com/cadorn/runbash) | [![CircleCI](https://circleci.com/gh/cadorn/runbash.svg?style=svg)](https://circleci.com/gh/cadorn/runbash) | [cadorn.github.io/runbash](https://cadorn.github.io/runbash) | `runbash`
 
 runbash
 =======
 
 Run [bash](https://www.gnu.org/software/bash/) and [bash.origin](https://github.com/bash-origin/bash.origin) from [NodeJS](https://nodejs.org/). Easily.
-
-Install
--------
-
-```bash
-npm install runbash
-```
 
 Usage
 -----
@@ -46,4 +39,4 @@ RUNBASH([
 Provenance
 ==========
 
-Original source logic under [Free Public License](https://opensource.org/licenses/FPL-1.0.0) by [Christoph Dorn](http://christophdorn.com)
+Original source logic under [Free Public License](https://opensource.org/licenses/FPL-1.0.0) by [Christoph Dorn](http://christophdorn.com) since 2015.
