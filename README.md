@@ -29,7 +29,7 @@ RUNBASH([
 
     // result.code ~ 0          // Process exit code
     // result.stdout ~ []
-    // result.status ~ []
+    // result.stderr ~ []
     // result.exports[<NAME>] ~ <VALUE>
 
     return null;
