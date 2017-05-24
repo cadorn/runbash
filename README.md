@@ -51,7 +51,7 @@ RUNBASH([], {
     // result.killDeep()        // Kill process and spawned child processes
 
     return null;
-});
+}).catch(console.error);
 ```
 
 Provenance
