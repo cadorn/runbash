@@ -19,42 +19,66 @@ BODY {
         <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
-    <ul>
-<li><strong>Source:</strong> <a href="https://github.com/cadorn/runbash">github.com/cadorn/runbash</a></li>
-<li><strong>Website:</strong> <a href="https://cadorn.github.io/runbash">cadorn.github.io/runbash</a></li>
-<li><strong>Continuous Integration:</strong> <a href="https://circleci.com/gh/cadorn/runbash"><img src="https://circleci.com/gh/cadorn/runbash.svg?style=svg" alt="CircleCI"></a></li>
-</ul>
+    <table>
+<thead>
+<tr>
+<th style="text-align:center">License</th>
+<th>Source</th>
+<th style="text-align:center">--&gt;</th>
+<th><a href="https://github.com/cadorn/runbash/blob/master/website.sh">Website</a></th>
+<th><a href="https://github.com/npm/npm">npm</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="https://opensource.org/licenses/FPL-1.0.0">FPL</a></td>
+<td><a href="https://github.com/cadorn/runbash">github.com/cadorn/runbash</a></td>
+<td style="text-align:center"><a href="https://circleci.com/gh/cadorn/runbash"><img src="https://circleci.com/gh/cadorn/runbash.svg?style=svg" alt="CircleCI"></a></td>
+<td><a href="https://cadorn.github.io/runbash">cadorn.github.io/runbash</a></td>
+<td><code>runbash</code></td>
+</tr>
+</tbody>
+</table>
 <h1 id="undefinedrunbash">runbash</h1>
-<p>Run <a href="https://www.gnu.org/software/bash/">bash</a> and <a href="https://github.com/bash-origin/bash.origin">bash.origin</a> from <a href="https://nodejs.org/">NodeJS</a>. Easily.</p>
-<h2 id="undefinedinstall">Install</h2>
-<pre><code class="undefinedbash">npm install runbash
-</code></pre>
+<p>Run <a href="https://www.gnu.org/software/bash/">bash</a> and <a href="https://github.com/bash-origin/bash.origin">bash.origin</a> from <a href="https://nodejs.org/">NodeJS</a>. Easily. Promise.</p>
 <h2 id="undefinedusage">Usage</h2>
 <pre><code class="undefinedjavascript"><span class="hljs-keyword">const</span> RUNBASH = <span class="hljs-built_in">require</span>(<span class="hljs-string">"runbash"</span>);
-
-RUNBASH([
-    <span class="hljs-string">"echo 'Hello World'"</span>,
-    <span class="hljs-string">"echo 'FOO: BAR'"</span>
-], {
-    <span class="hljs-attr">verbose</span>: <span class="hljs-literal">false</span>,
-    <span class="hljs-attr">progress</span>: <span class="hljs-literal">false</span>,
-    <span class="hljs-attr">wrappers</span>: {
-        <span class="hljs-string">"bash.origin"</span>: <span class="hljs-literal">true</span>
+</code></pre>
+<h3 id="undefinedrun-process-then-resolve">Run Process .then resolve</h3>
+<pre><code class="undefinedjavascript">RUNBASH([
+    <span class="hljs-string">"echo 'Hello World'"</span>,       <span class="hljs-comment">// Run a command</span>
+    <span class="hljs-string">"echo 'FOO: BAR'"</span>           <span class="hljs-comment">// Export a variable</span>
+], {                            <span class="hljs-comment">// Defaults</span>
+    verbose: <span class="hljs-literal">false</span>,             <span class="hljs-comment">// Log internal activity</span>
+    progress: <span class="hljs-literal">false</span>,            <span class="hljs-comment">// Log process output</span>
+    wrappers: {                 <span class="hljs-comment">// Setup environment before commands</span>
+        <span class="hljs-string">"bash.origin"</span>: <span class="hljs-literal">true</span>     <span class="hljs-comment">// Load bash.origin</span>
     },
-    <span class="hljs-attr">wait</span>: <span class="hljs-literal">true</span>,
-    <span class="hljs-attr">exports</span>: <span class="hljs-literal">true</span>,    
+    <span class="hljs-attr">wait</span>: <span class="hljs-literal">true</span>,                 <span class="hljs-comment">// Resolve when process ends</span>
+    exports: <span class="hljs-literal">false</span>,             <span class="hljs-comment">// Scan for /^&lt;NAME&gt;: &lt;VALUE&gt;$/</span>
 }).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">result</span>) </span>{
 
-    <span class="hljs-comment">// result.code</span>
-    <span class="hljs-comment">// result.stdout</span>
-    <span class="hljs-comment">// result.status</span>
-    <span class="hljs-comment">// result.exports.FOO</span>
+    <span class="hljs-comment">// result.code ~ 0          // Process exit code</span>
+    <span class="hljs-comment">// result.stdout ~ []</span>
+    <span class="hljs-comment">// result.stderr ~ []</span>
+    <span class="hljs-comment">// result.exports[&lt;NAME&gt;] ~ &lt;VALUE&gt;</span>
 
     <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
-});
+}).catch(<span class="hljs-built_in">console</span>.error);
+</code></pre>
+<h3 id="undefinedstart-process-then-resolve">Start Process .then resolve</h3>
+<pre><code class="undefinedjavascript">RUNBASH([], {
+    <span class="hljs-attr">wait</span>: <span class="hljs-literal">false</span>
+}).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">result</span>) </span>{
+
+    <span class="hljs-comment">// result.process ~ &lt;Process Object&gt;</span>
+    <span class="hljs-comment">// result.killDeep()        // Kill process and spawned child processes</span>
+
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+}).catch(<span class="hljs-built_in">console</span>.error);
 </code></pre>
 <h1 id="undefinedprovenance">Provenance</h1>
-<p>Original source logic under <a href="https://opensource.org/licenses/FPL-1.0.0">Free Public License</a> by <a href="http://christophdorn.com">Christoph Dorn</a></p>
+<p>Original Source Logic under <a href="https://opensource.org/licenses/FPL-1.0.0">Free Public License</a> by <a href="http://christophdorn.com">Christoph Dorn</a> since 2015.</p>
 
 </body>
 </html>
