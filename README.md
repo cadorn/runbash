@@ -17,16 +17,16 @@ const RUNBASH = require("runbash");
 RUNBASH([
     "echo 'Hello World'",       // Run a command
     "echo 'FOO: BAR'"           // Export a variable
-], {
+], {                            // Defaults
     verbose: false,             // Log internal activity
     progress: false,            // Log process output
     wrappers: {                 // Setup environment before commands
         "bash.origin": true     // Load bash.origin
     },
     wait: true,                 // Resolve when process ends
-    exports: true,              // Scan for /^<NAME>: <VALUE>$/
+    exports: false,             // Scan for /^<NAME>: <VALUE>$/
 }).then(function (result) {
-
+    
     // result.code ~ 0          // Process exit code
     // result.stdout ~ []
     // result.stderr ~ []
@@ -34,6 +34,16 @@ RUNBASH([
 
     return null;
 }).catch(console.error);
+
+RUNBASH([], {
+    wait: false
+}).then(function (result) {
+
+    // result.process ~ <Process Object>
+    // result.killDeep()        // Kill process and spawned child processes
+
+    return null;
+});
 ```
 
 Provenance
