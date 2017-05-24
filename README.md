@@ -13,7 +13,11 @@ Usage
 
 ```javascript
 const RUNBASH = require("runbash");
+```
 
+### Run Process .then resolve
+
+```javascript
 RUNBASH([
     "echo 'Hello World'",       // Run a command
     "echo 'FOO: BAR'"           // Export a variable
@@ -34,7 +38,11 @@ RUNBASH([
 
     return null;
 }).catch(console.error);
+```
 
+### Start Process .then resolve
+
+```javascript
 RUNBASH([], {
     wait: false
 }).then(function (result) {
