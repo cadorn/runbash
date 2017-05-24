@@ -6,7 +6,7 @@
 runbash
 =======
 
-Run [bash](https://www.gnu.org/software/bash/) and [bash.origin](https://github.com/bash-origin/bash.origin) from [NodeJS](https://nodejs.org/). Easily.
+Run [bash](https://www.gnu.org/software/bash/) and [bash.origin](https://github.com/bash-origin/bash.origin) from [NodeJS](https://nodejs.org/). Easily. Promise.
 
 Usage
 -----
