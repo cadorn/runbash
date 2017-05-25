@@ -1,6 +1,6 @@
 
 | License | Source | &#8212;&raquo; | [Website](https://github.com/cadorn/runbash/blob/master/website.sh) | [npm](https://github.com/npm/npm) |
-| :---: | --- | :---: | --- | --- |
+| :---: | :---: | :---: | :---: | :---: |
 | [FPL](https://opensource.org/licenses/FPL-1.0.0) | [github.com/cadorn/runbash](https://github.com/cadorn/runbash) | [![CircleCI](https://circleci.com/gh/cadorn/runbash.svg?style=svg)](https://circleci.com/gh/cadorn/runbash) | [cadorn.github.io/runbash](https://cadorn.github.io/runbash) | `runbash`
 
 runbash
