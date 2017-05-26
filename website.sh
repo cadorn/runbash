@@ -23,13 +23,14 @@ CALL_pages publish {
         }
 
         A {
-            color: #0069ff;
+            color: #0000ff;
             text-decoration: none;
             border-bottom: 1px dashed;
         }
 
         A:visited {
-            color: #5b00ff;
+            color: #aa5e13;
+            border-bottom: 0px;
         }
 
         H1 {
