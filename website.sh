@@ -30,7 +30,7 @@ CALL_pages publish {
 
         A:visited {
             color: #aa5e13;
-            border-bottom: 0px;
+            border-bottom: 1px solid #ffffff;
         }
 
         H1 {
