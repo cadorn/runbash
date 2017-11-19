@@ -1,6 +1,6 @@
 {
     "name": "runbash",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "main": "runbash.js",
     "pm": {
         "publish": "npm"
@@ -10,7 +10,7 @@
         "bluebird": "^3.5.0"
     },
     "devDependencies": {
-        "bash.origin.workspace": "^0.2.17"        
+        "bash.origin.workspace": "^0.2.17"
     },
     "scripts": {
         "publish-website": "BO_ROOT_SCRIPT_PATH=$(pwd)/node_modules/bash.origin/bash.origin ./website.sh",
