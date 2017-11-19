@@ -237,8 +237,8 @@ module.exports = function (commands, options) {
 	    if (options.wait === false) {
 	    	return callback(null, {
 	    		process: proc,
-	    		killDeep: function () {
-	    			return Promise.promisify(function (callback) {
+	    		killDeep: function () {					
+					return Promise.promisify(function (callback) {
 						return getProcesses(function (err, processes) {
 							if (err) return callback(err);
 							var pids = [];

@@ -3,12 +3,14 @@
     "version": "0.0.6",
     "main": "runbash.js",
     "dependencies": {
-        "bash.origin.test": "^0.1.30",
-        "bash.origin": "^0.1.59",
+        "bash.origin": "^0.1.74",
         "bluebird": "^3.5.0"
+    },
+    "devDependencies": {
+        "bash.origin.workspace": "^0.2.17"        
     },
     "scripts": {
         "publish-website": "BO_ROOT_SCRIPT_PATH=$(pwd)/node_modules/bash.origin/bash.origin ./website.sh",
-        "test": "BO_ROOT_SCRIPT_PATH=$(pwd)/node_modules/bash.origin/bash.origin bash.origin.test examples"
+        "test": "bash.origin.test examples"
     }
 }
