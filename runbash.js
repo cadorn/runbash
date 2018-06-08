@@ -212,8 +212,9 @@ module.exports = function (commands, options) {
 	    		var err = new Error("Commands exited with code: " + code);
 	    		err.code = code;
 	    		err.stdout = stdout;
-	    		err.stderr = stderr;
-	    		console.error("err", err);
+				err.stderr = stderr;
+				// TODO: Only log in debug mode
+	    		//console.error("err", err);
 	    		return callback(err);
 	    	}
 	    	stdout = stdout.join("");

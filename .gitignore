@@ -1,5 +1,5 @@
 /node_modules/
 /examples/*/.actual.*
-/.installed.*
+/.installed*
 *~.compiled.*
 .rt/
