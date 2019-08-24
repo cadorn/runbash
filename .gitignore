@@ -3,3 +3,4 @@
 /.installed*
 *~.compiled.*
 .rt/
+.~*

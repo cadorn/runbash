@@ -1,19 +1,19 @@
 {
-    "name": "runbash",
-    "version": "0.0.8",
-    "main": "runbash.js",
-    "pm": {
-        "publish": "npm"
-    },
-    "dependencies": {
-        "bash.origin": "^0.1.74",
-        "bluebird": "^3.5.0"
-    },
-    "devDependencies": {
-        "bash.origin.workspace": "^0.2.17"
-    },
-    "scripts": {
-        "publish-website": "BO_ROOT_SCRIPT_PATH=$(pwd)/node_modules/bash.origin/bash.origin ./website.sh",
-        "test": "bash.origin.test examples"
-    }
+  "name": "runbash",
+  "version": "0.0.9",
+  "main": "runbash.js",
+  "pm": {
+    "publish": "npm"
+  },
+  "dependencies": {
+    "bash.origin": "^0.2.0-pre.0",
+    "bluebird": "^3.5.0"
+  },
+  "devDependencies": {
+    "bash.origin.lib": "^0.4.0-pre.0"    
+  },
+  "scripts": {
+    "publish-website": "./website.sh",
+    "test": "bash.origin.test examples"
+  }
 }
