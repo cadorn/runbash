@@ -1,6 +1,6 @@
 {
   "name": "runbash",
-  "version": "0.0.9",
+  "version": "0.1.0-pre.0",
   "main": "runbash.js",
   "pm": {
     "publish": "npm"
@@ -10,7 +10,7 @@
     "bluebird": "^3.5.0"
   },
   "devDependencies": {
-    "bash.origin.lib": "^0.4.0-pre.0"    
+    "bash.origin.lib": "^0.4.0-pre.2"
   },
   "scripts": {
     "publish-website": "./website.sh",

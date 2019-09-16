@@ -190,20 +190,28 @@ module.exports = function (commands, options) {
 	    proc.on("error", function(err) {
 	    	return callback(err);
 	    });
-	    var stdout = [];
-	    var stderr = [];
+	    var stdout = null;
+	    var stderr = null;
 
 	    function formatEscapeCodes (data) {
 	    	return data;
 	    }
 
 	    proc.stdout.on('data', function (data) {
-		    	stdout.push(data.toString());
-					if (options.verbose || options.progress) process.stdout.write(formatEscapeCodes(data.toString()));
+			if (stdout) {
+				stdout = Buffer.concat([stdout, data]);
+			} else {
+				stdout = data;
+			}
+			if (options.verbose || options.progress) process.stdout.write(formatEscapeCodes(data.toString()));
 	    });
 	    proc.stderr.on('data', function (data) {
-	    		stderr.push(data.toString());
-					if (options.verbose || options.progress) process.stderr.write(formatEscapeCodes(data.toString()));
+			if (stderr) {
+				stderr = Buffer.concat([stderr, data]);
+			} else {
+				stderr = data;
+			}
+			if (options.verbose || options.progress) process.stderr.write(formatEscapeCodes(data.toString()));
 	    });
 	    proc.stdin.write(commands.join("\n"));
 	    proc.stdin.end();
@@ -217,21 +225,20 @@ module.exports = function (commands, options) {
 	    		//console.error("err", err);
 	    		return callback(err);
 	    	}
-	    	stdout = stdout.join("");
 	    	var exports = {};
 	    	if (options.exports) {
                 var re = /^([^:\s]+):\s?(.*?)$/gm;
 				var m;
-				while ( (m = re.exec(stdout)) ) {
+				while ( (m = re.exec(stdout.toString())) ) {
 				    if (options.exports[m[1]]) {
 				        exports[m[1]] = m[2];
 				    }
 				}
-	    	}
+			}
 	        return callback(null, {
 				code: 0,
 	            stdout: stdout,
-	            stderr: stderr.join(""),
+	            stderr: stderr,
 	            exports: exports
 	        });
 	    });
