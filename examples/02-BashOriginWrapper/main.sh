@@ -5,12 +5,19 @@ BO_run_recent_node --eval '
     const RUNBASH = require("../..");
 
     RUNBASH([
-        "echo $PWD"
-    ]).then(function (result) {
+        "echo $PWD",
+        "BO_log 1 \"Hello World\""
+    ], {
+        wrappers: {
+            "bash.origin": true
+        }
+    }).then(function (result) {
 
         result.stdout = result.stdout.toString();
+        result.stderr = result.stderr.toString();
 
         ASSERT.equal(result.stdout, process.cwd() + "\n");
+        ASSERT.equal(result.stderr, "Hello World\n");
 
         console.log("result", JSON.stringify(result, null, 4));
 

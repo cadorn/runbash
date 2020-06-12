@@ -6,11 +6,11 @@
     "publish": "npm"
   },
   "dependencies": {
-    "bash.origin": "^0.2.0-pre.0",
+    "bash.origin": "^0.2.0-pre.4",
     "bluebird": "^3.5.0"
   },
   "devDependencies": {
-    "bash.origin.lib": "^0.4.0-pre.2"
+    "bash.origin.lib": "^0.4.0-pre.20"
   },
   "scripts": {
     "publish-website": "./website.sh",
