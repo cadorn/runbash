@@ -1,6 +1,6 @@
 {
   "name": "runbash",
-  "version": "0.2.0-pre.0",
+  "version": "0.2.0-pre.1",
   "main": "runbash.js",
   "pm": {
     "publish": "npm"
